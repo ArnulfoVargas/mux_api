@@ -1,7 +1,10 @@
 package routes
 
 import (
-	example_routes "muxapi/routes/example"
+	"muxapi/routes/categories"
+	"muxapi/routes/example"
+	"muxapi/routes/pictures"
+	"muxapi/routes/products"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -12,8 +15,16 @@ func HandleRoutes() http.Handler {
 	r := mux.NewRouter()
 
   example_routes.HandleExample(r)
+  category_routes.HandleCategories(r)
+  product_routes.HandleProducts(r)
+  pictures_routes.HandlePictures(r)
 
   // CORS
+
+  // c := cors.New(cors.Options{
+  //   AllowedOrigins: []string{}, <- Allowed sites
+  // })
+
   handler := cors.AllowAll().Handler(r)
 
   return handler

@@ -2,20 +2,15 @@ package main
 
 import (
 	"fmt"
+	"muxapi/models"
 	"muxapi/routes"
 	"net/http"
 	"os"
 	"strings"
-
-	"github.com/joho/godotenv"
 )
 
 func main() {
-  err := godotenv.Load()
-
-  if err != nil {
-    panic("Couldnt load .env file")
-  }
+  models.Migrations()
 
   address := generateAddress()
   fmt.Println("Running server at " + address)

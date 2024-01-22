@@ -4,6 +4,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -17,9 +18,15 @@ var Database = func () *gorm.DB {
   }
 
   return db
-}
+}()
 
 func generateDSN() string {
+  err := godotenv.Load()  
+
+  if err != nil {
+    panic("Couldnt load .env file")
+  }
+
   sb := strings.Builder{}
 
   sb.WriteString("host=")
@@ -43,3 +50,4 @@ func generateDSN() string {
 
   return sb.String()
 }
+
