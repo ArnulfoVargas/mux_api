@@ -11,8 +11,8 @@ type Product struct {
 	Date        time.Time `json:"date"`
 
 	// Foreing Key
-	Category_id   uint          `json:"category_id"`
-  UserCategory  UserCategory  `json:"user_category" gorm:"foreignKey:Category_id"`
+	Category_id uint      `json:"category_id"`
+  UserCategory UserCategory          `json:"user_category" gorm:"foreignKey:Category_id"`
 }
 
 type Products []Product

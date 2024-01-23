@@ -5,6 +5,8 @@ import (
 	"muxapi/routes/example"
 	"muxapi/routes/pictures"
 	"muxapi/routes/products"
+	"muxapi/routes/protected"
+	"muxapi/routes/register"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -18,6 +20,8 @@ func HandleRoutes() http.Handler {
   category_routes.HandleCategories(r)
   product_routes.HandleProducts(r)
   pictures_routes.HandlePictures(r)
+  register.HandleRegister(r)
+  protected.HandleProtected(r)
 
   // CORS
 

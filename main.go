@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"strings"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -18,6 +20,10 @@ func main() {
 }
 
 func generateAddress() string {
+  err := godotenv.Load()
+  if err != nil {
+    panic(err)
+  }
   sb := strings.Builder{}
 
   sb.WriteString(os.Getenv("ADDRESS"))
